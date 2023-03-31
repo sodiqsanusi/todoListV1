@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todolist with EJS</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="box" id="heading">
+    <h1> <%= dayOfTheWeek %> </h1>
+  </div>
+  
+  <div class="box">
+    <% for(let todo of todos){ %> 
+      <form action="/delete" method="post">
+        <div class="item">
+          <input name="todoChecked" type="checkbox" value="<%= todo._id %>" onchange="this.form.submit()">
+          <p> <%= todo.name %> </p>
+        </div>
+      </form>
+    <% } %> 
+    <form action="/" method="POST" class="item">
+      <input type="text" name="new" id="newTask" placeholder="New Task" autocomplete="off" required title="Add a todo">
+      <button type="submit">+</button>
+    </form>
+  </div>
+</body>
+</html>
